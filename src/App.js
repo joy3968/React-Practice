@@ -20,7 +20,13 @@ function App() {
       <div className="black-nav">
         <div>개발 Blog</div>
       </div>
-      <button onClick={ 제목바꾸기 }>버튼</button>
+      <button onClick={ () => {
+        let copy = [...글제목]; // [...~~] 새로운 포인터 만듦.
+        // state의 특징중 하나가 기존의 state와 신규 state가 같은 경우 변경되지 않는다. 배열이 변경되어도, 기존의 포인터는 같으므로 포인트를 변경해주지 않을 시 state가 변경되지 않음.
+
+        copy[0] = '여자 코트 추천';
+        글제목변경(copy)
+      }}>글수정</button>
       <div className="list">
         <h3> { 글제목[0] }&nbsp;
           <span onClick={ ()=> { 따봉변경(따봉 + 1) } }>👍</span>{ 따봉 }
